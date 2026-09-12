@@ -370,6 +370,56 @@
     });
   }, 250);
 
+  /* ---------- NCERT extras: tables + activities + diagrams ---------- */
+  var EX = (window.EXTRAS || {})[C.slug];
+  if (EX) {
+    var html = '';
+    if (EX.figs && EX.figs.length) {
+      html += '<section id="diagrams-sec" class="section-alt"><div class="container">' +
+        '<div class="sec-head reveal"><span class="eyebrow c-cyan"><span class="dot"></span> Diagrams</span>' +
+        '<h2 class="sec-title">The diagrams, <span class="grad">drawn for you</span></h2>' +
+        '<p class="sec-lede">The exact labelled diagrams the board asks for — trace them once, then redraw from memory.</p></div>' +
+        '<div class="diagram-grid">' +
+        EX.figs.map(function (g) {
+          return '<figure class="card diagram-card reveal rv-zoom"><div class="dg-svg">' + g.svg + '</div><figcaption>' + g.cap + '</figcaption></figure>';
+        }).join('') + '</div></div></section>';
+    }
+    if (EX.tables && EX.tables.length) {
+      html += '<section id="tables-sec"><div class="container">' +
+        '<div class="sec-head reveal"><span class="eyebrow c-amber"><span class="dot"></span> NCERT tables</span>' +
+        '<h2 class="sec-title">Every table, <span class="grad">as the book gives it</span></h2></div>' +
+        EX.tables.map(function (tb) {
+          return '<div class="card card-pad reveal" style="margin-bottom:var(--sp-4)"><h3 style="font-family:var(--font-display);font-size:1.15rem;margin-bottom:12px">' + tb.t + '</h3>' +
+            '<div class="dtable-wrap" style="margin-top:0"><table class="dtable">' + tb.h + '</table></div></div>';
+        }).join('') + '</div></section>';
+    }
+    if (EX.acts && EX.acts.length) {
+      html += '<section id="activities-sec" class="section-alt"><div class="container">' +
+        '<div class="sec-head reveal"><span class="eyebrow c-emerald"><span class="dot"></span> NCERT Activities</span>' +
+        '<h2 class="sec-title">Do the activities, <span class="grad">read the observations</span></h2>' +
+        '<p class="sec-lede">The practical-skill questions come straight from these — aim, steps, observation, conclusion.</p></div>' +
+        EX.acts.map(function (a, i) {
+          return '<details class="card act-card reveal"><summary><b>Activity ' + a.n + '</b> — ' + a.aim + '</summary><div class="act-body">' +
+            '<p class="act-lbl">Steps</p><ol>' + a.steps.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ol>' +
+            '<p class="act-lbl">Observation</p><p>' + a.obs + '</p>' +
+            (a.con ? '<p class="act-lbl">Conclusion</p><p>' + a.con + '</p>' : '') +
+            '</div></details>';
+        }).join('') + '</div></section>';
+    }
+    if (html) {
+      var exSec = document.createElement('div');
+      exSec.innerHTML = html;
+      while (exSec.firstChild) {
+        var sec = exSec.firstChild;
+        var ref = $('#terms-sec') || $('#dates-sec') || $('#chq-sec');
+        if (ref) ref.parentNode.insertBefore(sec, ref);
+        else $('main').appendChild(sec);
+        exSec.removeChild(sec);
+        if (exSec.firstChild) exSec.insertBefore(document.createElement('div'), exSec.firstChild); // spacing
+      }
+    }
+  }
+
   /* ---------- chapter quiz (from NDATA bank) ---------- */
   const qStage = $('#chq-stage');
   if (qStage && ND.quiz && ND.quiz.length) {
