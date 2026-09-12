@@ -1,0 +1,7 @@
+pdfs/
+texts/
+*.pdf
+*.txt
+node_modules/
+*.log
+.vercel/

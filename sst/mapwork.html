@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Map Work Checker — CBSE Class 10 SST</title>
+<meta name="description" content="Interactive India map work checker: CBSE prescribed locations for History and Geography with learn, locate and identify modes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff6ec7'/%3E%3Cstop offset='.5' stop-color='%237c6cff'/%3E%3Cstop offset='1' stop-color='%2339d0f9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-size='52' font-family='Georgia' font-weight='bold' text-anchor='middle' fill='white'%3E3%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<div class="aurora" aria-hidden="true"></div>
+<div class="dotgrid" aria-hidden="true"></div>
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<nav class="nav" aria-label="Main navigation">
+  <a class="brand" href="index.html">
+    <span class="brand-mark" aria-hidden="true">10</span>
+    <span class="brand-name">SST Half-Yearly
+      <span class="brand-sub">Class 10 · CBSE · 17 chapters</span>
+    </span>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="index.html#hist">History</a>
+    <a class="nav-link" href="index.html#geo">Geography</a>
+    <a class="nav-link" href="index.html#pol">Civics</a>
+    <a class="nav-link" href="index.html#eco">Economics</a>
+    <a class="nav-link" href="mapwork.html">Map Work</a>
+  </div>
+  <a class="nav-cta" href="pol3.html#quiz">Ch 12 Quiz</a>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">All chapters (navigator)</a>
+  <a href="index.html#hist">History · 4 chapters</a>
+  <a href="index.html#geo">Geography · 5 chapters</a>
+  <a href="index.html#pol">Political Science · 4 chapters</a>
+  <a href="index.html#eco">Economics · 4 chapters</a>
+  <a href="mapwork.html"><b>Map Work Checker</b></a>
+  <a href="pol3.html">Ch 12 full site</a>
+</div>
+
+<button class="to-top" id="to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<main>
+
+<header class="hero cp-hero" id="top">
+  <div class="container">
+    <div style="max-width:840px">
+      <span class="hero-badge"><span class="live"></span> Official CBSE 2025-26 map items · History 2 marks + Geography 3 marks</span>
+      <h1 class="hero-title">
+        <span class="line"><span style="transform:translateY(110%);opacity:0;display:inline-block">Map work,</span></span>
+        <span class="line"><span class="grad" style="transform:translateY(110%);opacity:0;display:inline-block">drilled.</span></span>
+      </h1>
+      <p class="hero-lede">
+        <strong>The full prescribed list, the real India map.</strong> 107 locations across 10 categories —
+        movement sites, dams, mines, power plants, steel, textiles, IT parks, ports, airports, crops and soils.
+        Learn every location, test yourself in <b>Locate</b> and <b>Identify</b>, or sketch your answers in <b>Draw</b> —
+        zoom and pan right into the map.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-ghost" href="index.html">← All chapters</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="checker" style="padding-top:0">
+  <div class="container">
+    <div class="mapgrid">
+      <div class="map-frame reveal rv-zoom">
+        <div class="map-stage" id="map-stage" role="application" aria-label="Interactive India map for map work practice">
+          <div class="map-zoomer" id="map-zoomer">
+            <img src="assets/india_map.svg" alt="Outline map of India with state boundaries" draggable="false">
+            <canvas id="pen-canvas" aria-label="Drawing layer for map practice"></canvas>
+          </div>
+          <div class="zoom-ctrl" role="group" aria-label="Zoom controls">
+            <button id="zoom-in" aria-label="Zoom in">+</button>
+            <span class="zoom-lvl" id="zoom-level">100%</span>
+            <button id="zoom-out" aria-label="Zoom out">−</button>
+            <button id="zoom-reset" aria-label="Reset zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></button>
+          </div>
+        </div>
+        <p style="margin-top:12px;font-size:12px;color:var(--ink-dim);text-align:center">
+          Pinch, double-tap or use +/− to zoom · drag to pan · items per the official CBSE 2025-26 list of map items ·
+          map base: India location map (Wikimedia Commons, CC-BY-SA) · markers are approximate exam locations
+        </p>
+      </div>
+
+      <div class="map-panel">
+        <div class="mode-tabs" role="tablist" aria-label="Modes">
+          <button class="mode-tab active" data-mode="learn">Learn</button>
+          <button class="mode-tab" data-mode="locate">Locate</button>
+          <button class="mode-tab" data-mode="identify">Identify</button>
+          <button class="mode-tab" data-mode="draw">Draw</button>
+        </div>
+
+        <div class="pen-bar" id="pen-bar" aria-label="Pen tools"></div>
+
+        <div class="cat-chips" id="cat-bar" role="group" aria-label="Choose category"></div>
+
+        <div class="card map-prompt">
+          <h3 class="mp-q" id="mp-q">Learn mode</h3>
+          <p class="mp-sub" id="mp-sub"></p>
+          <p class="mp-hint" id="mp-hint"></p>
+          <div class="map-fb" id="map-fb" role="status" aria-live="polite"></div>
+        </div>
+
+        <div class="card card-pad map-scorebar">
+          <span class="map-stat">Q <b id="map-count">—</b></span>
+          <span class="map-stat">Score <b id="map-score">—</b></span>
+          <span class="map-stat">Streak <b id="map-streak">—</b></span>
+        </div>
+
+        <div class="map-actions" id="map-actions"></div>
+
+        <div class="learn-list" id="learn-list" aria-label="Location list"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-bottom" style="margin-top:0;border:none">
+      <span>Made with <span class="heart">♥</span> for Class 10 · items per official CBSE 2025-26 list</span>
+      <span><a href="index.html" style="color:var(--cyan)">All chapters</a></span>
+    </div>
+  </div>
+</footer>
+<script src="js/mapdata.js" defer></script>
+<script src="js/mapcheck.js" defer></script>
+</body>
+</html>
