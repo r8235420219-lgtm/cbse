@@ -381,3 +381,47 @@ html.night body, html.night { background: var(--bg-0); }
 }
 .theme-btn:hover { border-color: var(--ink); transform: translateY(-1px); }
 .theme-btn svg { width: 19px; height: 19px; }
+
+/* PATCH 3 — every remaining hardcoded light text in site.css, day-scoped */
+html.day .case-text { color: var(--ink-soft) !important; background: var(--bg-1) !important; border-left-color: var(--pink) !important; }
+html.day .copt { color: var(--ink) !important; background: #fff !important; }
+html.day .copt:hover:not(:disabled) { color: var(--ink) !important; border-color: var(--ink) !important; }
+html.day .copt.correct { background: #ecfdf3 !important; color: var(--emerald) !important; border-color: var(--emerald) !important; }
+html.day .copt.wrong { background: #fef1f2 !important; color: var(--rose) !important; border-color: var(--rose) !important; }
+html.day .cwhy { color: var(--ink-soft) !important; background: var(--bg-1) !important; border-color: var(--glass-border) !important; }
+html.day .case-q { border-top-color: var(--bg-2) !important; }
+html.day .cq-t { color: var(--ink) !important; }
+html.day .chrow .cr-sub { color: var(--ink-dim) !important; }
+html.day .cp-h b { color: var(--ink) !important; }
+html.day .datecard .dc-t { color: var(--ink-soft) !important; }
+html.day .wb-list li { color: var(--ink-soft) !important; }
+html.day .mapbanner p { color: var(--ink-soft) !important; }
+html.day .mapbanner h2, html.day .mapbanner * { color: inherit; }
+html.day .rr-chip b { color: var(--ink) !important; }
+html.day .photo-card .ph-cap b { color: var(--ink) !important; }
+html.day .photo-card .ph-cap { background: rgba(33,29,20,.82) !important; color: #f1ede3 !important; }
+html.day .photo-card .ph-cap b { color: #fff !important; }
+html.day .mode-tab:hover { color: var(--ink) !important; }
+html.day .cat-chip:hover { color: var(--ink) !important; }
+html.day .learn-item .li-sub { color: var(--ink-dim) !important; }
+html.day .learn-item .li-title { color: var(--ink) !important; }
+html.day .map-legend, html.day .mode-tabs, html.day .learn-item { color: var(--ink-soft); }
+html.day .pen-color.on { border-color: var(--ink) !important; }
+
+/* mapwork + revision page specifics */
+html.day .mapbanner { background: var(--bg-1) !important; }
+html.day .map-wrap, html.day .map-stage { border-color: var(--glass-border) !important; }
+html.day .rev-card, html.day .flashcard, html.day .flip { color: var(--ink); background: #fff !important; border-color: var(--glass-border) !important; }
+
+/* safety net: any text still inheriting near-white */
+html.day .card, html.day .card * { color: inherit; }
+html.day .card b, html.day .card strong { color: var(--ink); }
+
+/* PATCH 4 — white bolds inside lineblocks, solutions, dotnav */
+html.day .lb-explain b, html.day .lb-explain strong { color: var(--ink) !important; }
+html.day .acc-inner b { color: var(--ink) !important; }
+html.day .sol-body .sol-ans b { color: var(--ink) !important; }
+html.day .acc-btn { color: var(--ink) !important; background: #fff !important; border-color: var(--glass-border) !important; }
+html.day .acc-body { color: var(--ink-soft) !important; }
+html.day .foot-links a:hover { color: var(--ink) !important; }
+html.day .acc-item.open .acc-btn { border-color: var(--ink) !important; }
