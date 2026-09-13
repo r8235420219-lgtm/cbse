@@ -407,16 +407,14 @@
         }).join('') + '</div></section>';
     }
     if (html) {
-      var exSec = document.createElement('div');
-      exSec.innerHTML = html;
-      while (exSec.firstChild) {
-        var sec = exSec.firstChild;
-        var ref = $('#terms-sec') || $('#dates-sec') || $('#chq-sec');
-        if (ref) ref.parentNode.insertBefore(sec, ref);
+      var exWrap = document.createElement('div');
+      exWrap.innerHTML = html;
+      var secs = Array.prototype.slice.call(exWrap.children);
+      var ref = $('#terms-sec') || $('#dates-sec') || $('#chq-sec');
+      secs.forEach(function (sec) {
+        if (ref && ref.parentNode) ref.parentNode.insertBefore(sec, ref);
         else $('main').appendChild(sec);
-        exSec.removeChild(sec);
-        if (exSec.firstChild) exSec.insertBefore(document.createElement('div'), exSec.firstChild); // spacing
-      }
+      });
     }
   }
 
