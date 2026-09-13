@@ -425,3 +425,50 @@ html.day .acc-btn { color: var(--ink) !important; background: #fff !important; b
 html.day .acc-body { color: var(--ink-soft) !important; }
 html.day .foot-links a:hover { color: var(--ink) !important; }
 html.day .acc-item.open .acc-btn { border-color: var(--ink) !important; }
+
+/* ==========================================================================
+   PATCH 5 — MATH & CHEMISTRY TYPEFACES
+   .math   → STIX Two Text (serious math serif; default body for formulas)
+   .chem   → STIX Two Text + tightened spacing for equations/arrows
+   .unit   → small-caps upright for units/symbols context
+   Used inside .lb-ncert/.lb-explain/.dtable/.act-body/.quiz-q/.cp-h b etc.
+   via JS auto-wrappers (js/eqn.js) — no content edits needed.
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+html.day, html.night { --font-math: 'STIX Two Text', 'Cambria Math', Georgia, serif; }
+
+.fx, .chem-eq, .math {
+  font-family: var(--font-math) !important;
+  font-size: 1.04em;
+  letter-spacing: 0.01em;
+  white-space: normal;
+  padding: 0 1px;
+}
+html.day .fx, html.day .chem-eq, html.day .math {
+  background: var(--bg-1);
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  color: var(--ink);
+}
+html.night .fx, html.night .chem-eq, html.night .math {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  color: #fff;
+}
+/* chemical arrows render nicely */
+.fx .arrow, .chem-eq .arrow { letter-spacing: 0; padding: 0 2px; }
+/* sub/sup keep size ratios crisp */
+.fx sub, .fx sup, .chem-eq sub, .chem-eq sup, .math sub, .math sup {
+  font-size: 0.68em;
+  vertical-align: baseline;
+  position: relative;
+  top: 0.42em;
+}
+.fx sup, .chem-eq sup, .math sup { top: -0.55em; }
+
+/* numerals inside formula chips look best in the math face too */
+.dg-svg text { font-family: var(--font-math), sans-serif; }
